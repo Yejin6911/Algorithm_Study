@@ -2,11 +2,6 @@ import sys
 
 n = int(sys.stdin.readline().rstrip())
 
-
-def check(n, k):
-    pass
-
-
 result = 0
 num_5 = n//5
 

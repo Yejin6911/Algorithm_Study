@@ -25,7 +25,7 @@ result = 0
 x = 9
 
 for i in range(len(nums)):
-    reuslt += nums[i]*x # 9부터 1씩 줄어들며 곱하기
+    result += nums[i]*x # 9부터 1씩 줄어들며 곱하기
     x -= 1
 
 print(result)

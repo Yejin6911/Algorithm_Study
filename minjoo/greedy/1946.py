@@ -10,6 +10,7 @@ for _ in range(t):
 
     new = sorted(new, key=lambda x:x[0]) # 서류 성적이 좋은 순으로
 
+    # 면접 
     minscore = new[0][1] 
     for i in range(1, n): # 면접 성적 비교
         if(new[i][1] < minscore): # 면접 성적이 더 좋다면

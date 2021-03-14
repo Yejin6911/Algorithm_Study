@@ -1,3 +1,5 @@
+# 이게 왜.. greedy야..?
+
 tc = 1
 while(1):
     L, P, V = map(int, input().split())

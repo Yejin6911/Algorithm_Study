@@ -45,7 +45,7 @@ def bfs():
                 print(depth) # 성공
                 return
             if(next_rx == next_bx and next_ry == next_by): # 둘이 같은 곳으로 쏠렸을 경우
-                if(r_count > b_count): # 더 적게 이동한 구슬을 한칸 뒤로
+                if(r_count > b_count): # 더 많이 이동한 구슬을 한칸 뒤로
                     next_rx -= dx[i]
                     next_ry -= dy[i]
                 else:

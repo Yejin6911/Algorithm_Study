@@ -13,7 +13,7 @@ def rotate(n, b): # 오른쪽 90도 회전
 def convert(n, b):
     new_lst = [i for i in b if i!=0] # 0을 제외한 list 저장
     for i in range(1, len(new_lst)):
-        if(new_lst[i-1] == newlist[i]):
+        if(new_lst[i-1] == new_lst[i]):
             new_lst[i-1] *= 2
             new_lst[i] = 0
     new_lst = [i for i in new_lst if i!=0]

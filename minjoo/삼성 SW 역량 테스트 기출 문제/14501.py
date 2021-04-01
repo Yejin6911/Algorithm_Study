@@ -19,9 +19,7 @@ idx = 0
 
 def decision(temp):
     global n
-
     while(temp):
-        # print(temp)
         t = temp.pop()
         if(len(t) == n):
             temp_complete.append(t)
@@ -38,7 +36,6 @@ def decision(temp):
             continue
 
         a = n - len(t)
-        # print("크기비교", day[len(t)], a)
         if(day[len(t)] > a):
             t.append(0)
             temp.append(t)

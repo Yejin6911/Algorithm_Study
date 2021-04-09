@@ -6,9 +6,8 @@ input = sys.stdin.readline
 dx = [0, 1, 0, -1]
 dy = [1, 0, -1, 0]
 
+
 # 감시 가능한 곳 찾아 개수 return
-
-
 def move(x, y, d):
     cnt = 0
     while True:

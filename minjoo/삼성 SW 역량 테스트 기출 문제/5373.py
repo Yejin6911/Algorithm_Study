@@ -1,5 +1,13 @@
 import sys
 input = sys.stdin.readline
+
+w = [["w"] * 3 for i in range(3)]
+y = [["y"] * 3 for i in range(3)]
+r = [["r"] * 3 for i in range(3)]
+o = [["o"] * 3 for i in range(3)]
+g = [["g"] * 3 for i in range(3)]
+b = [["b"] * 3 for i in range(3)]
+
 def rotate(color, ro):
     if ro == "-":
         temp = [[0] * 3 for i in range(3)]

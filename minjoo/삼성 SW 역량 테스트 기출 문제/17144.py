@@ -1,3 +1,4 @@
+#pypy로 제출
 import sys
 input = sys.stdin.readline
 

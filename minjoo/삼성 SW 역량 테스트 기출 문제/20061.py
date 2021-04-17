@@ -1,4 +1,3 @@
-# blue 좀더 고치기.. 예제 4번부터
 import sys
 input = sys.stdin.readline
 
@@ -11,38 +10,50 @@ result = 0
 def green_board(t, x, y):
     global green
     if(t == 1):
-        for i in range(5, -1, -1):
-            if(green[i][y] == 0):
+        for i in range(1, 6):
+            if(green[i][y] != 0):
+                green[i-1][y] = 1
+                break
+            if(i == 5):
                 green[i][y] = 1
-                break
     elif(t == 2):
-        for i in range(5, -1, -1):
-            if(green[i][y] == 0 and green[i][y+1] == 0):
+        for i in range(1, 6):
+            if(green[i][y] != 0 or green[i][y+1] != 0):
+                green[i-1][y], green[i-1][y+1] = 1, 1
+                break
+            if(i == 5):
                 green[i][y], green[i][y+1] = 1, 1
-                break
     elif(t == 3):
-        for i in range(5, 0, -1):
-            if(green[i][y] == 0 and green[i-1][y] == 0):
-                green[i][y], green[i-1][y] = 1, 1
+        for i in range(2, 6):
+            if(green[i][y] != 0):
+                green[i-1][y], green[i-2][y] = 1, 1
                 break
+            if(i == 5):
+                green[i-1][y], green[i][y] = 1, 1
 
 def blue_board(t, x, y):
     global blue
     if(t == 1):
-        for i in range(5, -1, -1):
-            if(blue[i][x] == 0):
+        for i in range(1, 6):
+            if(blue[i][x] != 0):
+                blue[i-1][x] = 1
+                break
+            if(i == 5):
                 blue[i][x] = 1
-                break
     elif(t == 2):
-        for i in range(5, 0, -1):
-            if(blue[i][x] == 0 and blue[i-1][x] == 0):
+        for i in range(2, 6):
+            if(blue[i][x] != 0):
+                blue[i-1][x], blue[i-2][x] = 1, 1
+                break
+            if(i == 5):
                 blue[i][x], blue[i-1][x] = 1, 1
-                break
     elif(t == 3):
-        for i in range(5, -1, -1):
-            if(blue[i][x] == 0 and blue[i][x+1] == 0):
-                blue[i][x], blue[i][x+1] = 1, 1
+        for i in range(1, 6):
+            if(blue[i][x] != 0 or blue[i][x+1] != 0):
+                blue[i-1][x], blue[i-1][x+1] = 1, 1
                 break
+            if(i == 5):
+                blue[i][x], blue[i][x+1] = 1, 1
 
 def check1(color): # 가득찬 행/열 처리
     global result
@@ -79,7 +90,3 @@ for i in range(len(green)):
 for i in range(len(blue)):
     num += sum(blue[i])
 print(num)
-print(green)
-print(blue)
-   
-        

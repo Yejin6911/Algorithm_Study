@@ -2,13 +2,6 @@ import sys
 import copy
 input = sys.stdin.readline
 
-n, m, t = map(int, input().rstrip().split())
-board = [list(map(int, input().rstrip().split())) for _ in range(n)]
-order = []
-for i in range(t):
-    x, d, k = map(int, input().rstrip().split())
-    order.append((x, d, k))
-
 
 # 회전
 def spin(x, d, k):
@@ -63,8 +56,12 @@ def update():
     return new_board
 
 
-for o in order:
-    spin(o[0], o[1], o[2])
+n, m, t = map(int, input().rstrip().split())
+board = [list(map(int, input().rstrip().split())) for _ in range(n)]
+order = []
+for i in range(t):
+    x, d, k = map(int, input().rstrip().split())
+    spin(x, d, k)
     board = update()
 
 result = 0

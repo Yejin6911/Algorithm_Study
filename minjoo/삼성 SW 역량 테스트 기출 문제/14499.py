@@ -37,5 +37,3 @@ for i in range(k):
 
     x, y = nx, ny
     print(dice[0])
-
-

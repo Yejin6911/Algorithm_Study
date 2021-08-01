@@ -1,48 +1,33 @@
-import sys
+from collections import deque
 
-n = int(input()) # 전체 사람의 수
-a, b = map(int, input().split())
-m = int(input()) # 관계의 개수
 
-dic = {}
+n = int(input())
+q1, q2 = map(int, input().split())
+
+m = int(input())
+adj = [[] for _ in range(n+1)]
+visited = [0] * (n+1)
+
 for _ in range(m):
     x, y = map(int, input().split())
-    if(x in dic.keys()):
-        dic[x].append(y)
-    else:
-        dic[x] = [y]
-    if(y in dic.keys()):
-        dic[y].append(x)
-    else:
-        dic[y] = [x]
-print(dic)
-visited = [0 for _ in range(n+1)]
-flag = 0
-answer = sys.maxsize
-def dfs(a, b, ans):
-    global visited, flag, answer
-    visited[a] = 1
-    if(a == b):
-        if(answer > ans):
-            answer = ans
-            return
-    for i in range(len(dic[a])):
-        if(dic[a][i] == b):
-            ans += 1
-            flag = 1
-            if(answer > ans):
-                answer = ans
-                return
-        if(dic[a][i] in dic.keys() and visited[dic[a][i]] == 0):
-            ans += 1
-            dfs(dic[a][i], b, ans)
+    adj[x].append(y)
+    adj[y].append(x)
 
+def bfs(v, target):
+    count = 0
+    q = deque([[v, count]])
+    while(q):
+        value = q.popleft()
+        v = value[0]
+        count = value[1]
+        if(v == target):
+            return count
+        if(not visited[v]):
+            count += 1
+            visited[v] = True
+            for e in adj[v]:
+                if(not visited[e]):
+                    q.append([e, count])
+    return -1
 
-dfs(a, b, 0)
-print(visited)
-if(flag == 1):
-    print(answer)
-else:
-    print("-1")
-
-# 푸는중중중
+print(bfs(q1, q2))

@@ -1,7 +1,6 @@
 import sys
 from collections import deque
 input = sys.stdin.readline
-sys.setrecursionlimit(10**6)
 
 n, m = map(int, input().split())
 relation = [[] for _ in range(n+1)]
@@ -12,13 +11,16 @@ for _ in range(m):
 def bfs(x):
     q = deque()
     q.append(x)
+    visited = [0 for _ in range(n+1)]
+    visited[x] = 1
     cnt = 0
     while(q):
         x = q.popleft()
-        if(relation[x]):
-            cnt += 1
-            for nx in relation[x]:
-                q.append(nx)
+        for i in relation[x]:
+            if(visited[i] == 0):
+                visited[i] = 1
+                cnt += 1
+                q.append(i)
     return cnt
 
 ans = []
@@ -31,6 +33,5 @@ for i in range(1, n+1):
     elif(maxans == cnt):
         ans.append(i)
 
-for i in ans:
-    print(i, end=' ')
+print(*ans)
 

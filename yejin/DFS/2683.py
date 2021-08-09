@@ -50,7 +50,7 @@ while cheese:
                 cnt += 1
         # 2면 이상 닿은 경우
         if cnt >= 2:
-            M[x][y] = 3  # 녹은 경우 3으로 변경
+            M[x][y] = 0
             melt.append((x, y))
         # 2면 미만으로 닿은 경우
         else:

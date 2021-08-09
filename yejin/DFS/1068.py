@@ -41,6 +41,7 @@ visited = [0 for _ in range(n)]
 dfs(delete)
 new_tree = copy.deepcopy(tree)
 new_tree[parents[delete]].remove(delete)
+
 # 삭제 노드의 자식 노드 삭제
 for i in range(n):
     if visited[i] == 1:

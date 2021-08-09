@@ -2,9 +2,8 @@ import sys
 input = sys.stdin.readline
 sys.setrecursionlimit(10**6)
 
+
 # 방법 기억하기!!
-
-
 def post_order(start, end):
     if start > end:
         return

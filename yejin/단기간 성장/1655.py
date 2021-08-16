@@ -3,6 +3,9 @@ import sys
 input = sys.stdin.readline
 
 # 방법!!!!
+# https://art-coding3.tistory.com/44
+
+
 left_heap = []  # 중앙값보다 작거나 같은 값, 최대힙 구성
 right_heap = []  # 중앙값보다 큰 값, 최소힙 구성
 answer = []

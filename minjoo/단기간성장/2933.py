@@ -37,8 +37,7 @@ def check(board): # 분리된 클러스터 있는지 확인
             if(board[i][j] == 'x' and visited[i][j] == 0):
                 visited, rq = bfs(i, j, visited) # bfs
                 rq.sort(reverse=True, key=lambda x:x[0])
-                # print("rq", rq)
-                # group = rq
+
                 if(rq[0][0] != r-1):
                     group = rq
                 cnt += 1
@@ -85,12 +84,6 @@ for i in range(n):
     flag, group = check(board) # 분리된 클러스터 확인
     if(flag):
         board = moving(group, board) # 이동
-    # for i in range(r):
-    #     for j in range(c):
-    #         print(board[i][j], end='')
-
-    #     if(i!=r-1):
-    #         print()
 
 for i in range(r):
     for j in range(c):

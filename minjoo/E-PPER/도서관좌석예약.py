@@ -6,41 +6,32 @@ time = []
 for i in range(n):
     time.append([s[i], e[i]])
 
-time.sort(key=lambda x:(x[0], x[1]))
+time.sort(key=lambda x:(x[1], x[0]))
 
-print(time)
-maxcnt = 0
-maxidx = []
-for i in range(n):
-    start, end = time[i][0], time[i][1]
-    temp = 1
-    idx = [i]
-    for j in range(i+1, n):
-        if(time[j][0] >= end):
-            temp += 1
-            end = time[j][1]
-            idx.append(j)
-    if(maxcnt < temp):
-        maxcnt = temp
-        maxidx = idx
+cnt = 1
+end1 = time[0][1]
+end2 = 0
 
-maxidx.sort(reverse=True)
-for i in range(len(maxidx)):
-    time.pop(maxidx[i])
+for i in range(1, n):
 
-print(maxcnt)
-print(maxidx)
-print(time)
+    # 첫번째 자리에 넣을 수 있는 경우
+    if(time[i][0] >= end1 and time[i][0] < end2):
+        cnt += 1
+        end1 = time[i][1]
 
-maxcnt2 = 0
-for i in range(len(time)):
-    start, end = time[i][0], time[i][1]
-    temp = 1
-    for j in range(i+1, len(time)):
-        if(time[j][0] >= end):
-            temp += 1
-            end = time[j][1]
-    if(maxcnt2 < temp):
-        maxcnt2 = temp
+    # 두번째 자리에 넣을 수 있는 경우
+    elif(time[i][0] >= end2 and time[i][0] < end1):
+        cnt += 1
+        end2 = time[i][1]
 
-print(maxcnt + maxcnt2)
+    # 두 자리 모두 넣을 수 있는 경우 -> 시간 차이가 더 작은 곳으로 넣어줌
+    elif(time[i][0] >= end1 and time[i][0] >= end2):
+        one = time[i][0] - end1
+        two = time[i][0] - end2
+        if(one <= two):
+            end1 = time[i][1]
+        else:
+            end2 = time[i][1]
+        cnt += 1
+
+print(cnt)

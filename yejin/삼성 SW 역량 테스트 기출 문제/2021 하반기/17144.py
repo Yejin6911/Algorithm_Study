@@ -23,6 +23,7 @@ def spread(board):
 
 def clean(board):
     new_board = copy.deepcopy(board)
+    # 윗부분
     d = 3
     x, y = air[0][0], air[0][1]+1
     new_board[x][y] = 0
@@ -37,6 +38,7 @@ def clean(board):
         else:
             new_board[nx][ny] = board[x][y]
             x, y = nx, ny
+    # 아랫부분
     d = 3
     x, y = air[1][0], air[1][1]+1
     new_board[x][y] = 0
@@ -71,4 +73,4 @@ for _ in range(t):
 total = 0
 for row in board:
     total += sum(row)
-print(total+2)
+print(total+2)  # 공기청청기 -1 제외해주고 출력
